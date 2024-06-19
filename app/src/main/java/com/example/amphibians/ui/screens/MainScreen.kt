@@ -5,6 +5,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -16,12 +17,15 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
+import coil.compose.AsyncImage
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import coil.request.ImageRequest
+import com.example.amphibians.Amphibian
 import com.example.amphibians.R
-import com.example.amphibians.ui.screens.AmphibianViewModel.Amphibian
 import com.example.amphibians.ui.theme.AmphibiansTheme
 
 @Composable
@@ -43,7 +47,7 @@ fun MainScreen(
                 AmphibianCard(
                     name = it.name,
                     type = it.type,
-                    drawable = it.drawable,
+                    imageSource = it.imageSource,
                     description = it.description
                 )
             }
@@ -59,7 +63,7 @@ fun MainScreenPreview() {
         name = stringResource(id = R.string.placeholder_name),
         type = stringResource(id = R.string.placeholder_type),
         description = stringResource(id = R.string.placeholder_description),
-        drawable = R.drawable.great_basin_spadefoot
+        imageSource = "https://developer.android.com/codelabs/basic-android-kotlin-compose-amphibians-app/img/great-basin-spadefoot.png"
     )
     for (num in 1..5) {
         amphibians.add(amphibian)
@@ -73,7 +77,7 @@ fun MainScreenPreview() {
 fun AmphibianCard(
     name: String,
     type: String,
-    @DrawableRes drawable: Int,
+    imageSource: String,
     description: String,
     modifier: Modifier = Modifier
 ) {
@@ -86,12 +90,15 @@ fun AmphibianCard(
             style = MaterialTheme.typography.labelMedium,
             modifier = paddingModifier
         )
-        Image(
-            painterResource(id = drawable),
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
-            modifier = Modifier.fillMaxWidth()
-        )
+        AsyncImage(
+            model = ImageRequest.Builder(context = LocalContext.current)
+                .data(imageSource)
+                .crossfade(true)
+                .build(),
+            contentDescription = name,
+            placeholder = painterResource(id = R.drawable.great_basin_spadefoot),
+            contentScale = ContentScale.FillWidth,
+            modifier = Modifier.fillMaxWidth())
         Text(
             text = description, modifier = paddingModifier
         )
@@ -105,9 +112,8 @@ fun AmphibianCardPreview() {
     AmphibianCard(
         name = "Great Basin Spadefoot",
         type = "Toad",
-        drawable = R.drawable.great_basin_spadefoot,
-        description = "This toad spends most of its life underground due to the arid desert conditions in which it lives. Spadefoot toads earn the name because of their hind legs which are wedged to aid in digging. They are typically grey, green, or brown with dark spots."
-    )
+        imageSource = "https://developer.android.com/codelabs/basic-android-kotlin-compose-amphibians-app/img/great-basin-spadefoot.png",
+        description = "This toad spends most of its life underground due to the arid desert conditions in which it lives. Spadefoot toads earn the name because of their hind legs which are wedged to aid in digging. They are typically grey, green, or brown with dark spots.",)
 }
 
 

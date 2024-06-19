@@ -23,18 +23,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            val amphibians: ArrayList<AmphibianViewModel.Amphibian> = arrayListOf()
-            val amphibian = AmphibianViewModel.Amphibian(
-                name = stringResource(id = R.string.placeholder_name),
-                type = stringResource(id = R.string.placeholder_type),
-                description = stringResource(id = R.string.placeholder_description),
-                drawable = R.drawable.great_basin_spadefoot
-            )
-            for (num in 1..5) {
-                amphibians.add(amphibian)
-            }
+
             val viewModel: AmphibianViewModel by viewModels()
-            viewModel.setAmphibians(amphibians)
                 AmphibiansTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     MainScreen(
