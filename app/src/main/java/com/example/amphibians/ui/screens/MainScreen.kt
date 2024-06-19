@@ -33,7 +33,7 @@ fun MainScreen(
         Text(
             text = stringResource(id = R.string.app_name),
             style = MaterialTheme.typography.headlineMedium,
-            modifier = Modifier.padding(8.dp)
+            modifier = Modifier.padding(horizontal = 12.dp, vertical = 8.dp)
         )
         LazyColumn(
             contentPadding = PaddingValues(horizontal = 12.dp),
