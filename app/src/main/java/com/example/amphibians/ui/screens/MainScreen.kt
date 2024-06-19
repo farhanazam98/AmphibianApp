@@ -44,7 +44,7 @@ fun MainScreen(
                 AmphibianCard(
                     name = it.name,
                     type = it.type,
-                    imageSource = it.imageSource,
+                    imageSource = it.img_src,
                     description = it.description
                 )
             }
@@ -60,7 +60,7 @@ fun MainScreenPreview() {
         name = stringResource(id = R.string.placeholder_name),
         type = stringResource(id = R.string.placeholder_type),
         description = stringResource(id = R.string.placeholder_description),
-        imageSource = "https://developer.android.com/codelabs/basic-android-kotlin-compose-amphibians-app/img/great-basin-spadefoot.png"
+        img_src = "https://developer.android.com/codelabs/basic-android-kotlin-compose-amphibians-app/img/great-basin-spadefoot.png"
     )
     for (num in 1..5) {
         amphibians.add(amphibian)
