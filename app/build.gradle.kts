@@ -69,6 +69,8 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
     // Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-scalars:2.9.0")
+
 
     // Coil
     implementation("io.coil-kt:coil:2.6.0")

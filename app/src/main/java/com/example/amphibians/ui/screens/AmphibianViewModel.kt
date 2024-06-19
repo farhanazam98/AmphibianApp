@@ -1,10 +1,10 @@
 package com.example.amphibians.ui.screens
 
-import androidx.compose.ui.res.stringResource
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.amphibians.Amphibian
-import com.example.amphibians.R
+import com.example.amphibians.model.Amphibian
+import com.example.amphibians.network.AmphibianApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -13,7 +13,8 @@ import kotlinx.coroutines.launch
 
 class AmphibianViewModel : ViewModel() {
     data class AmphibianUiState(
-        val amphibians: List<Amphibian> = listOf()
+        val amphibians: List<Amphibian> = listOf(),
+        var json: String = ""
     )
 
     private val _uiState = MutableStateFlow(AmphibianUiState())
@@ -30,7 +31,18 @@ class AmphibianViewModel : ViewModel() {
        for (num in 1..5) {
            amphibians.add(amphibian)
        }
+       Log.d("amphibian", "dddddd")
        _uiState.update { it.copy(amphibians = amphibians) }
+       getAmphibians()
    }
+
+    private fun getAmphibians(){
+        viewModelScope.launch {
+            val listResult = AmphibianApi.retrofitService.getAmphibians()
+            Log.d("amphibian", "Asdf")
+            _uiState.update { it.copy(json = listResult) }
+        }
+
+    }
 
 }

@@ -1,11 +1,8 @@
 package com.example.amphibians.ui.screens
 
-import androidx.annotation.DrawableRes
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -24,7 +21,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.request.ImageRequest
-import com.example.amphibians.Amphibian
+import com.example.amphibians.model.Amphibian
 import com.example.amphibians.R
 import com.example.amphibians.ui.theme.AmphibiansTheme
 
@@ -69,7 +66,7 @@ fun MainScreenPreview() {
         amphibians.add(amphibian)
     }
     AmphibiansTheme {
-        MainScreen(amphibians)
+        MainScreen(amphibians = amphibians)
     }
 }
 

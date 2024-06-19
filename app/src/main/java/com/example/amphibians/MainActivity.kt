@@ -1,6 +1,7 @@
 package com.example.amphibians
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -23,7 +24,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-
             val viewModel: AmphibianViewModel by viewModels()
                 AmphibiansTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
