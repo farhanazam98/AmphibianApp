@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
 }
 
+
 android {
     namespace = "com.example.amphibians"
     compileSdk = 34
@@ -66,4 +67,12 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    // Retrofit
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+
+    // Coil
+    implementation("io.coil-kt:coil:2.6.0")
+
+    //kotlinx serialization
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.0")
 }
