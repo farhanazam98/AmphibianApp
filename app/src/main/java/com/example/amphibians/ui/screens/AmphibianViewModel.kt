@@ -1,15 +1,20 @@
-package com.example.amphibians
+package com.example.amphibians.ui.screens
 
-import androidx.compose.runtime.Immutable
-import androidx.compose.runtime.State
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
-class AmphibianViewModel: ViewModel() {
+class AmphibianViewModel : ViewModel() {
     data class AmphibianUiState(
-        val amphibians: List<String> = listOf("Frog", "Snake", "Lizard")
+        val amphibians: List<Amphibian> = listOf()
+    )
+
+    class Amphibian(
+        val name: String,
+        val type: String,
+        val description: String,
+        val drawable: Int,
     )
 
     private val _uiState = MutableStateFlow(AmphibianUiState())
