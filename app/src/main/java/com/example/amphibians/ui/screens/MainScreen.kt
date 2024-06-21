@@ -93,7 +93,7 @@ fun AmphibianCard(
                 .crossfade(true)
                 .build(),
             contentDescription = name,
-            placeholder = painterResource(id = R.drawable.great_basin_spadefoot),
+            placeholder = painterResource(id = R.drawable.loading_img),
             contentScale = ContentScale.FillWidth,
             modifier = Modifier.fillMaxWidth())
         Text(
